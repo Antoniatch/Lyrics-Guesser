@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-const Timer = () => {
-    const [timer, setTimer] = useState(30);
+const Timer = ({ timer, setTimer }) => {
+    
 
     useEffect(() => {
         const int = setInterval(() => {
-          setTimer((prevState) => prevState - 1);
+          setTimer((prevState) => prevState < 1 ? prevState = 0 : prevState - 1);
         }, 1000);
         return () => clearInterval(int);
       }, []);

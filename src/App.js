@@ -11,10 +11,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Header/>
-        <Home/>
+        {/* <Home/> */}
         <Game/>
-        <Result score={5} />
-        <Footer/>
+        {/* <Result score={5} /> */}
+        {/* <Footer/> */}
       </header>
     </div>
   );
