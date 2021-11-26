@@ -1,19 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../style/Game.css';
 import Timer from '../Timer';
 
 const Game = () => {
     const [numberTrackPlay, setNumberTrackPlay] = useState(1);
     const [isStart, setIsStart] = useState(false);
+    const [timer, setTimer] = useState(10);
 
-    const [timer, setTimer] = useState(30);
-
+    useEffect(() => {
+      if(timer === 0){
+        setNumberTrackPlay(n => n+1);
+        setTimer(10);
+        setIsStart(false);
+      }
+    }, [timer])
     
-
     return (
         <div>
             <h1>Chanson n°{numberTrackPlay}</h1>
-            {isStart ? <Timer timer={timer} setTimer={setTimer} /> : <h4>30 secondes</h4>}
+            {isStart ? <Timer timer={timer} setTimer={setTimer} /> : <h4>10 secondes</h4>}
             <button type="button" onClick={()=>{
                 // setTimeout(setNumberTrackPlay(numberTrackPlay+1) , 5000);
                 setIsStart(true)}} >Play</button>
